@@ -49,7 +49,6 @@ public class PlayerControls : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
-
         anim.SetFloat("Walk", z);
         anim.SetFloat("Rotate", x);
 
@@ -77,7 +76,7 @@ public class PlayerControls : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            if (Time.time - m_LastClickTime <= ComboTime)
+            if (Time.time - m_LastClickTime >= ComboTime)
             {
                 anim.SetBool("Attacke", true);
             }
