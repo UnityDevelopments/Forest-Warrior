@@ -89,13 +89,10 @@ public class PlayerControls : MonoBehaviour
             m_LastClickTime = Time.time;
         }
         //Движение вверх
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
             rb.AddForce(transform.up * jumpSpeed);
-            //velocity = Mathf.Sqrt(jumpHeight * -2f * (Gravity * GravityScale));
         }
-        //velocity += Gravity * GravityScale * Time.deltaTime;
-        //MovePlayer();
     }
 
     //void MovePlayer()
@@ -146,11 +143,6 @@ public class PlayerControls : MonoBehaviour
     private void OnCollisionStay()
     {
         isGround = true;
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        IsGroundedUpate(collision, true);
     }
 
     void OnCollisionExit(Collision collision)
