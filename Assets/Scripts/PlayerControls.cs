@@ -27,10 +27,12 @@ public class PlayerControls : MonoBehaviour
     public float GravityScale = 1;
     public float velocity = 5;
     public float jumpHeight = 4;
+    public float jumpSpeed;
+    private Rigidbody rb;
 
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    void Start()
     {
         // Обьявление героя
         Soldier_demo = gameObject;
@@ -38,8 +40,8 @@ public class PlayerControls : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         //задержка 3 сек
-        yield return new WaitForSeconds(3);
         anim.SetTrigger("Idle");
+        rb = GetComponent<Rigidbody>();
 
     }
 
@@ -89,9 +91,10 @@ public class PlayerControls : MonoBehaviour
         //Движение вверх
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            velocity = Mathf.Sqrt(jumpHeight * -2f * (Gravity * GravityScale));
+            rb.AddForce(transform.up * jumpSpeed);
+            //velocity = Mathf.Sqrt(jumpHeight * -2f * (Gravity * GravityScale));
         }
-        velocity += Gravity * GravityScale * Time.deltaTime;
+        //velocity += Gravity * GravityScale * Time.deltaTime;
         //MovePlayer();
     }
 

@@ -338,6 +338,7 @@ MonoBehaviour:
   GravityScale: 1
   velocity: 5
   jumpHeight: 4
+  jumpSpeed: 100
 --- !u!54 &276912902
 Rigidbody:
   m_ObjectHideFlags: 0
