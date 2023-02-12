@@ -36,7 +36,7 @@ public class PlayerControls : MonoBehaviour
         Soldier_demo = gameObject;
         //enemies = GameObject.FindGameObjectsWithTag("Enemy");
         _rb = GetComponent<Rigidbody>();
-        anim = this.GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         //задержка 3 сек
         yield return new WaitForSeconds(3);
         anim.SetTrigger("Idle");
