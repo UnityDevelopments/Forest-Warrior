@@ -59,6 +59,16 @@ public class PlayerControls : MonoBehaviour
         {
             rb.AddForce(transform.up * jumpSpeed);
         }
+
+        //Атака
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetBool("IsAttack", true);
+        }
+        else
+        {
+            anim.SetBool("IsAttack", false);
+        }
     }
 
 
