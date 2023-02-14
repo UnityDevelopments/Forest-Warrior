@@ -8,6 +8,7 @@ public class PlayerControls : MonoBehaviour
     public float speedRotation = 3f;
     public bool isGround;
     public float jumpSpeed;
+    public GameObject rotateObject;
     private Rigidbody rb;
     private Animator anim;
 
@@ -51,7 +52,7 @@ public class PlayerControls : MonoBehaviour
         //Движение влево
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            gameObject.transform.Rotate(Vector3.down * speedRotation);
+            gameObject.transform.Rotate(-Vector3.up * speedRotation);
         }
 
         //Движение вверх

@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 534669905}
   - component: {fileID: 534669904}
   - component: {fileID: 534669903}
+  - component: {fileID: 534669906}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -384,12 +385,26 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.050000012, y: 2.1100001, z: -4.52}
+  m_LocalPosition: {x: 0.050000012, y: 2.394, z: -4.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &534669906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534669902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a38adc1c0af6b4096c1ebdecbf5c5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1948534514912258}
+  distance: 1
 --- !u!114 &1555314774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +421,7 @@ MonoBehaviour:
   speedRotation: 3
   isGround: 1
   jumpSpeed: 100
+  rotateObject: {fileID: 1733834927332270}
 --- !u!65 &1555314775
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3460,7 +3476,7 @@ GameObject:
   - component: {fileID: 1555314774}
   - component: {fileID: 1948534514912259}
   m_Layer: 0
-  m_Name: Low Poly Warrior
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -73,7 +73,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 12004, y: 14042}
   vertical: 0
-  controlID: 56
+  controlID: 81
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -218,7 +218,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 492}
   m_MaxSize: {x: 12004, y: 14042}
   vertical: 1
-  controlID: 57
+  controlID: 82
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_MinSize: {x: 679, y: 221}
   m_MaxSize: {x: 12004, y: 4021}
   vertical: 0
-  controlID: 58
+  controlID: 83
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -273,7 +273,7 @@ MonoBehaviour:
   - {fileID: 14}
   - {fileID: 12}
   m_Selected: 1
-  m_LastSelected: 0
+  m_LastSelected: 3
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -441,19 +441,19 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Low Poly Fantasy Warrior/Prefabs
+    - Assets/Resources
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Low Poly Fantasy Warrior/Prefabs
+  - Assets/Resources
   m_LastFoldersGridSize: -1
   m_LastProjectPath: D:\Projects\Unity Project\Forest-Warrior
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 743d0000
-    m_LastClickedID: 15732
+    m_SelectedIDs: 6e3d0000
+    m_LastClickedID: 15726
     m_ExpandedIDs: 00000000623d00006c3d000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -526,7 +526,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 5}
+      m_ClientGUIView: {fileID: 2}
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
       m_InstanceID: 0
@@ -629,9 +629,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 2.5989323, y: -0.7821331, z: 1.1780405}
+    m_Target: {x: 3.499703, y: -0.20572853, z: -0.42803383}
     speed: 2
-    m_Value: {x: 2.5989323, y: -0.7821331, z: 1.1780405}
+    m_Value: {x: 3.499703, y: -0.20572853, z: -0.42803383}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -677,13 +677,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.25256196, y: 0.5851075, z: -0.19845483, w: 0.7446345}
+    m_Target: {x: 0.2680278, y: 0.3040207, z: -0.08956624, w: 0.90978765}
     speed: 2
-    m_Value: {x: 0.25256157, y: 0.5851066, z: -0.19845451, w: 0.7446334}
+    m_Value: {x: 0.2680274, y: 0.30402023, z: -0.0895661, w: 0.9097862}
   m_Size:
-    m_Target: 3.7377846
+    m_Target: 4.1830277
     speed: 2
-    m_Value: 3.7377846
+    m_Value: 4.1830277
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -823,6 +823,6 @@ MonoBehaviour:
     serializedVersion: 2
     x: 0
     y: 658
-    width: 1530
+    width: 1920
     height: 333
   m_ViewDataDictionary: {fileID: 0}
