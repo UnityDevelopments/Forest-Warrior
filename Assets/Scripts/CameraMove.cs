@@ -17,7 +17,7 @@ public class CameraMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
         gameObject.transform.position = new Vector3(player.transform.position.x + startPosX, player.transform.position.y + startPosY, player.transform.position.z + startPosZ - distance);
     }

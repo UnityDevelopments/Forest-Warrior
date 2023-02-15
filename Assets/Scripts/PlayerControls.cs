@@ -6,6 +6,7 @@ public class PlayerControls : MonoBehaviour
 {
     public float speed = 5f;
     public float speedRotation = 3f;
+    public float acceleration;
     public bool isGround;
     public float jumpSpeed;
     public GameObject rotateObject;
@@ -24,20 +25,24 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
 
-        if(Input.GetKey(KeyCode.W))
+        //Движение вперед
+        if (Input.GetKey(KeyCode.W) && isGround)
         {
             anim.SetBool("IsRunning", true);
-        }
-        else
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                gameObject.transform.position += gameObject.transform.forward * speed * acceleration * Time.deltaTime;
+            }
+            else
+            {
+                gameObject.transform.position += gameObject.transform.forward * speed * Time.deltaTime;
+            }
+        }else
         {
             anim.SetBool("IsRunning", false);
         }
 
-        //Движение вперед
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
-        {
-            gameObject.transform.position += gameObject.transform.forward * speed * Time.deltaTime;
-        }
+
         //Движение назад
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
