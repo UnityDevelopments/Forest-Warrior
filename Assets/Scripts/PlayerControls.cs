@@ -15,6 +15,7 @@ public class PlayerControls : MonoBehaviour
     public Slider HpSlider;
     private Rigidbody Rb;
     private Animator Anim;
+    private Vector3 moveVector;
 
     // Start is called before the first frame update
     void Start()
@@ -27,47 +28,35 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
+
         //Обновление жизней
         HpSlider.value = Hp / 100;
 
-        //Движение вперед
-        if (Input.GetKey(KeyCode.W) && IsGround)
+        //Перемещение и Вращение
+        if ((vertical != 0 || horizontal != 0) && IsGround)
         {
             Anim.SetBool("IsRunning", true);
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 Anim.SetFloat("SpeedRun", 2);
-                gameObject.transform.position += gameObject.transform.forward * Speed * Acceleration * Time.deltaTime;
+                moveVector = new Vector3(horizontal * Speed * Acceleration * Time.deltaTime, 0, vertical * Speed * Acceleration * Time.deltaTime);
             }
             else
             {
                 Anim.SetFloat("SpeedRun", 1);
-                gameObject.transform.position += gameObject.transform.forward * Speed * Time.deltaTime;
+                moveVector = new Vector3(horizontal * Speed * Time.deltaTime, 0, vertical * Speed * Time.deltaTime);
             }
-        }else
+            transform.position += moveVector;
+            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.up, moveVector, SpeedRotation, 0.0f));
+        }
+        else
         {
             Anim.SetBool("IsRunning", false);
         }
 
-
-        //Движение назад
-        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
-            gameObject.transform.position -= gameObject.transform.forward * Speed * Time.deltaTime;
-        }
-        //Движение вправо
-        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-        {
-            gameObject.transform.Rotate(Vector3.up * SpeedRotation);
-
-        }
-        //Движение влево
-        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
-        {
-            gameObject.transform.Rotate(-Vector3.up * SpeedRotation);
-        }
-
-        //Движение вверх
+        //Прыжок
         if (Input.GetKeyDown(KeyCode.Space) && IsGround)
         {
             Rb.AddForce(transform.up * JumpSpeed);
@@ -84,7 +73,6 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-
     private void OnCollisionStay()
     {
         IsGround = true;
@@ -92,14 +80,9 @@ public class PlayerControls : MonoBehaviour
 
     void OnCollisionExit(Collision collision)
     {
-        IsGroundedUpate(collision, false);
-    }
-
-    private void IsGroundedUpate(Collision collision, bool value)
-    {
         if (collision.gameObject.tag == ("Ground"))
         {
-            IsGround = value;
+            IsGround = true;
         }
     }
 }
