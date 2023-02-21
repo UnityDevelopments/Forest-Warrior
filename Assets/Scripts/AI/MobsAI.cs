@@ -1,36 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.AI;
 using UnityEngine;
 
 public class MobsAI : MonoBehaviour
 {
-    private NavMeshAgent navMeshAgent;
-    [SerializeField] private float changePositionTime = 5f;
-    [SerializeField] private float moveDistance = 10f;
+    public GameObject target;
+    public float speed;
 
-    private void Start()
+    // Start is called before the first frame update
+    void Start()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
-        InvokeRepeating(nameof(RandomNavSphere), changePositionTime, repeatRate: changePositionTime);
-    }
-    
-
-    Vector3 RandomNavSphere(float distance)
-    {
-        Vector3 randomDirection = UnityEngine.Random.insideUnitSphere * distance;
-
-        randomDirection += transform.position;
-
-        NavMeshHit navHit;
-
-        NavMesh.SamplePosition(randomDirection, out navHit, distance, -1);
-
-        return navHit.position;
+        
     }
 
-    private void MoveAnimal()
+    // Update is called once per frame
+    void LateUpdate()
     {
-        navMeshAgent.SetDestination(RandomNavSphere(moveDistance));
+        Ray ray = new Ray(transform.position, transform.forward);
+        Debug.DrawRay(ray.origin, ray.direction * 10f, Color.black);
+        if(Vector3.Distance(transform.position, target.transform.position) > 1.5) transform.position = Vector3.MoveTowards(transform.position, target.transform.position, speed * Time.deltaTime);
+        transform.LookAt(target.transform, Vector3.up);
     }
 }
