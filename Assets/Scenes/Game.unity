@@ -893,7 +893,7 @@ Canvas:
   m_GameObject: {fileID: 906173703}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 534669904}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1375,6 +1375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1948534514912258}
   speed: 3
+  visibleDistance: 10
 --- !u!65 &2055546879
 BoxCollider:
   m_ObjectHideFlags: 0
