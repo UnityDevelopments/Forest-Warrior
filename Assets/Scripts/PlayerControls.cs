@@ -38,6 +38,7 @@ public class PlayerControls : MonoBehaviour
         if ((vertical != 0 || horizontal != 0) && IsGround)
         {
             Anim.SetBool("IsRunning", true);
+            //Ускорение
             if (Input.GetKey(KeyCode.LeftShift))
             {
                 Anim.SetFloat("SpeedRun", 2);
@@ -49,7 +50,8 @@ public class PlayerControls : MonoBehaviour
                 moveVector = new Vector3(horizontal * Speed * Time.deltaTime, 0, vertical * Speed * Time.deltaTime);
             }
             transform.position += moveVector;
-            transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.up, moveVector, SpeedRotation, 0.0f));
+            transform.rotation = Quaternion.LookRotation(moveVector, Vector3.up);
+            //transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.up, moveVector, SpeedRotation, 0.0f));
         }
         else
         {
