@@ -127,6 +127,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 241736399}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &143962294 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8061654117059054286, guid: aef0b1bf09a88e74093f5ba9d483e2c8,
+    type: 3}
+  m_PrefabInstance: {fileID: 241736399}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &143962295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143962294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66e06d907660ce64694fa9f6c6dc413b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1948534514912258}
+  speed: 3
+  visibleDistance: 10
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,8 +312,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: GiantDummy
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4287432284854624455, guid: aef0b1bf09a88e74093f5ba9d483e2c8, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aef0b1bf09a88e74093f5ba9d483e2c8, type: 3}
 --- !u!1 &282026787
 GameObject:

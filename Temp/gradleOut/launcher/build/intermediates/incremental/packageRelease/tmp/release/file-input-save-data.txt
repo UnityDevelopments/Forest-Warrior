@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Feb 23 22:11:05 MSK 2023
+#Thu Feb 23 22:17:00 MSK 2023
 60.set=ASSET
 52.set=ASSET
 53.base=D\:\\Projects\\Unity Project\\Forest-Warrior\\Temp\\gradleOut\\launcher\\build\\intermediates\\merged_assets\\release\\out
