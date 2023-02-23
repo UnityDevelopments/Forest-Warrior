@@ -1,4 +1,0 @@
-#Thu Feb 23 22:16:59 MSK 2023
-base.0=D\:\\Projects\\Unity Project\\Forest-Warrior\\Temp\\gradleOut\\launcher\\build\\intermediates\\transforms\\dexMerger\\release\\0
-path.0=classes.dex
-renamed.0=classes.dex
