@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class PlayerControls : MonoBehaviour
     private Rigidbody Rb;
     private Animator Anim;
     private Vector3 moveVector;
+    public Joystick joystick;
+    private float horizontal, vertical;
+    public Button attackButton, shiftButton;
 
     // Start is called before the first frame update
     void Start()
@@ -28,8 +32,10 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        /*horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");*/
+        horizontal = joystick.Horizontal;
+        vertical = joystick.Vertical;
 
         //Обновление жизней
         HpSlider.value = Hp / 100;
@@ -38,17 +44,6 @@ public class PlayerControls : MonoBehaviour
         if ((vertical != 0 || horizontal != 0) && IsGround)
         {
             Anim.SetBool("IsRunning", true);
-            //Ускорение
-            if (Input.GetKey(KeyCode.LeftShift))
-            {
-                Anim.SetFloat("SpeedRun", 2);
-                moveVector = new Vector3(horizontal * Speed * Acceleration * Time.deltaTime, 0, vertical * Speed * Acceleration * Time.deltaTime);
-            }
-            else
-            {
-                Anim.SetFloat("SpeedRun", 1);
-                moveVector = new Vector3(horizontal * Speed * Time.deltaTime, 0, vertical * Speed * Time.deltaTime);
-            }
             transform.position += moveVector;
             transform.rotation = Quaternion.LookRotation(moveVector, Vector3.up);
             //transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.up, moveVector, SpeedRotation, 0.0f));
@@ -63,16 +58,6 @@ public class PlayerControls : MonoBehaviour
         {
             Rb.AddForce(transform.up * JumpSpeed);
         }
-
-        //Атака
-        if (Input.GetMouseButtonDown(0))
-        {
-            Anim.SetBool("IsAttack", true);
-        }
-        else
-        {
-            Anim.SetBool("IsAttack", false);
-        }
     }
 
     private void OnCollisionStay()
@@ -85,6 +70,33 @@ public class PlayerControls : MonoBehaviour
         if (collision.gameObject.tag == ("Ground"))
         {
             IsGround = true;
+        }
+    }
+
+    public void Attack(PointerEventData eventData)
+    {
+        /*if (Input.GetMouseButtonDown(0))
+        {
+            Anim.SetBool("IsAttack", true);
+        }
+        else
+        {
+            Anim.SetBool("IsAttack", false);
+        }*/
+    }
+
+    public void Shift(Button button)
+    {
+        //Ускорение
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Anim.SetFloat("SpeedRun", 2);
+            moveVector = new Vector3(horizontal * Speed * Acceleration * Time.deltaTime, 0, vertical * Speed * Acceleration * Time.deltaTime);
+        }
+        else
+        {
+            Anim.SetFloat("SpeedRun", 1);
+            moveVector = new Vector3(horizontal * Speed * Time.deltaTime, 0, vertical * Speed * Time.deltaTime);
         }
     }
 }
