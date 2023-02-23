@@ -6,97 +6,84 @@ using UnityEngine.EventSystems;
 
 public class PlayerControls : MonoBehaviour
 {
-    public float Speed = 5f;
-    public float SpeedRotation = 3f;
-    public float Hp;
-    public float Acceleration;
-    public bool IsGround;
-    public float JumpSpeed;
-    public GameObject RotateObject;
-    public Slider HpSlider;
-    private Rigidbody Rb;
-    private Animator Anim;
+    public float speed, speedRotation, hp, acceleration, jumpSpeed;
+    private bool isGround;
+    public GameObject rotateObject;
+    public Slider hpSlider;
+    private Rigidbody rb;
+    private Animator anim;
     private Vector3 moveVector;
     public Joystick joystick;
     private float horizontal, vertical;
-    public Button attackButton, shiftButton;
+    public MyButton attackButton, shiftButton;
 
     // Start is called before the first frame update
     void Start()
     {
-        Rb = GetComponent<Rigidbody>();
-        Anim = GetComponent<Animator>();
-        HpSlider.value = Hp / 100;
+        rb = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
+        hpSlider.value = hp / 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        /*horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");*/
         horizontal = joystick.Horizontal;
         vertical = joystick.Vertical;
 
         //Обновление жизней
-        HpSlider.value = Hp / 100;
+        hpSlider.value = hp / 100;
 
         //Перемещение и Вращение
-        if ((vertical != 0 || horizontal != 0) && IsGround)
+        if ((vertical != 0 || horizontal != 0) && isGround)
         {
-            Anim.SetBool("IsRunning", true);
+            anim.SetBool("IsRunning", true);
+            //Ускорение
+            if (shiftButton.isPressed)
+            {
+                anim.SetFloat("SpeedRun", 2);
+                moveVector = new Vector3(horizontal * speed * acceleration * Time.deltaTime, 0, vertical * speed * acceleration * Time.deltaTime);
+            }
+            else
+            {
+                anim.SetFloat("SpeedRun", 1);
+                moveVector = new Vector3(horizontal * speed * Time.deltaTime, 0, vertical * speed * Time.deltaTime);
+            }
             transform.position += moveVector;
             transform.rotation = Quaternion.LookRotation(moveVector, Vector3.up);
-            //transform.rotation = Quaternion.LookRotation(Vector3.RotateTowards(transform.up, moveVector, SpeedRotation, 0.0f));
         }
         else
         {
-            Anim.SetBool("IsRunning", false);
+            anim.SetBool("IsRunning", false);
         }
 
         //Прыжок
-        if (Input.GetKeyDown(KeyCode.Space) && IsGround)
+        if (Input.GetKeyDown(KeyCode.Space) && isGround)
         {
-            Rb.AddForce(transform.up * JumpSpeed);
+            rb.AddForce(transform.up * jumpSpeed);
+        }
+
+        //Атака
+        if (attackButton.isPressed)
+        {
+            anim.SetBool("IsAttack", true);
+        }
+        else
+        {
+            anim.SetBool("IsAttack", false);
         }
     }
 
     private void OnCollisionStay()
     {
-        IsGround = true;
+        isGround = true;
     }
 
     void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.tag == ("Ground"))
         {
-            IsGround = true;
-        }
-    }
-
-    public void Attack(PointerEventData eventData)
-    {
-        /*if (Input.GetMouseButtonDown(0))
-        {
-            Anim.SetBool("IsAttack", true);
-        }
-        else
-        {
-            Anim.SetBool("IsAttack", false);
-        }*/
-    }
-
-    public void Shift(Button button)
-    {
-        //Ускорение
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            Anim.SetFloat("SpeedRun", 2);
-            moveVector = new Vector3(horizontal * Speed * Acceleration * Time.deltaTime, 0, vertical * Speed * Acceleration * Time.deltaTime);
-        }
-        else
-        {
-            Anim.SetFloat("SpeedRun", 1);
-            moveVector = new Vector3(horizontal * Speed * Time.deltaTime, 0, vertical * Speed * Time.deltaTime);
+            isGround = true;
         }
     }
 }

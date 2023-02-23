@@ -65,6 +65,7 @@
      <Compile Include="Assets\Scripts\AI\MobsAI.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Main.cs" />
+     <Compile Include="Assets\Scripts\MyButton.cs" />
      <Compile Include="Assets\Scripts\PlayerControls.cs" />
      <None Include="Assets\SimplePixelUI\fonts\Font2\license.txt" />
      <None Include="Assets\SimplePixelUI\fonts\Font1\license.txt" />
