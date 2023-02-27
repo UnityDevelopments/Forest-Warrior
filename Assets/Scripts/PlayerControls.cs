@@ -6,21 +6,21 @@ using UnityEngine.EventSystems;
 
 public class PlayerControls : MonoBehaviour
 {
-    public float speed, speedRotation, hp, acceleration, jumpSpeed;
+    public float speed, speedRotation, hp, acceleration, damage, timeAttack;
     private bool isGround;
     public GameObject rotateObject;
     public Slider hpSlider;
-    private Rigidbody rb;
     private Animator anim;
     private Vector3 moveVector;
     public Joystick joystick;
     private float horizontal, vertical;
     public MyButton attackButton, shiftButton;
+    private GameObject enemy;
+    private float lastTime;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
         hpSlider.value = hp / 100;
     }
@@ -57,15 +57,11 @@ public class PlayerControls : MonoBehaviour
             anim.SetBool("IsRunning", false);
         }
 
-        //Прыжок
-        if (Input.GetKeyDown(KeyCode.Space) && isGround)
-        {
-            rb.AddForce(transform.up * jumpSpeed);
-        }
-
         //Атака
-        if (attackButton.isPressed)
+        if (attackButton.isPressed && Time.time - lastTime >= timeAttack)
         {
+            if (enemy != null) enemy.GetComponent<Enemy>().hp -= damage;
+            lastTime = Time.time;
             anim.SetBool("IsAttack", true);
         }
         else
@@ -74,7 +70,7 @@ public class PlayerControls : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay()
+    void OnCollisionStay()
     {
         isGround = true;
     }
@@ -84,6 +80,18 @@ public class PlayerControls : MonoBehaviour
         if (collision.gameObject.tag == ("Ground"))
         {
             isGround = true;
+        }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            enemy = null;
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            enemy = collision.gameObject;
         }
     }
 }
