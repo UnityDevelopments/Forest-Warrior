@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        objectMesh.transform.rotation = Quaternion.Euler(0.0f, 0.0f, gameObject.transform.rotation.z * -1.0f);
+        objectMesh.transform.rotation = Quaternion.Euler(objectMesh.transform.rotation.eulerAngles.x, gameObject.transform.rotation.z * -1.0f, objectMesh.transform.rotation.eulerAngles.z);
         textMesh.text = $"{hp}/{maxHp}";
 
         transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Quaternion.LookRotation(target.transform.position - transform.position).eulerAngles.y, transform.rotation.eulerAngles.z);
@@ -33,6 +33,9 @@ public class Enemy : MonoBehaviour
             anim.SetBool("IsAttack", false);
             anim.SetBool("IsRunning", true);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
+        }else if(Vector3.Distance(transform.position, target.transform.position) > visibleDistance)
+        {
+            anim.SetBool("IsRunning", false);
         }
         else if(Vector3.Distance(transform.position, target.transform.position) <= 1.5)
         {
