@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\Game.cs" />
     <Compile Include="Assets\Scripts\Main.cs" />
     <Compile Include="Assets\Scripts\MyButton.cs" />
+    <Compile Include="Assets\Scripts\PLane.cs" />
     <Compile Include="Assets\Scripts\PlayerControls.cs" />
     <None Include="Assets\SimplePixelUI\fonts\Font2\license.txt" />
     <None Include="Assets\PolygonFantasyHeroCharacters\Shaders\POLYGON_CustomCharacters.shader" />
