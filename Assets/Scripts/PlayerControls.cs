@@ -51,22 +51,22 @@ public class PlayerControls : MonoBehaviour
             }
             transform.position += moveVector;
             transform.rotation = Quaternion.LookRotation(moveVector, Vector3.up);
-
-            //Выносливость
-            if (shiftButton.isPressed && Time.time - lastTimeEndurance >= 1 && endurance > 0)
-            {
-                endurance -= 10;
-                lastTimeEndurance = Time.time;
-            }
-            else if (!shiftButton.isPressed && Time.time - recoveryTimeEndurance >= 2 && endurance < 100)
-            {
-                endurance += 10;
-                recoveryTimeEndurance = Time.time;
-            }
         }
         else
         {
             anim.SetBool("IsRunning", false);
+        }
+
+        //Выносливость
+        if (shiftButton.isPressed && Time.time - lastTimeEndurance >= 1 && endurance > 0)
+        {
+            endurance -= 10;
+            lastTimeEndurance = Time.time;
+        }
+        else if (!shiftButton.isPressed && Time.time - recoveryTimeEndurance >= 2 && endurance < 100)
+        {
+            endurance += 10;
+            recoveryTimeEndurance = Time.time;
         }
 
         //Атака
