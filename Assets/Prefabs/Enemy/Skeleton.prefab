@@ -629,6 +629,8 @@ MonoBehaviour:
   damage: 5
   timeAttack: 1
   hp: 50
+  rewardOfKill: 5
+  spawnEnemy: {fileID: 0}
 --- !u!1 &1223537491749410842
 GameObject:
   m_ObjectHideFlags: 0

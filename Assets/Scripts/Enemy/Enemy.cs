@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     private GameObject target;
     public float speed, visibleDistance, damage, timeAttack, hp;
     public int rewardOfKill;
+    public GameObject spawnEnemy;
     private GameObject objectMesh;
     private TextMesh textMesh;
     private float lastTime, maxHp;
@@ -30,15 +31,24 @@ public class Enemy : MonoBehaviour
         objectMesh.transform.rotation = Quaternion.Euler(objectMesh.transform.rotation.eulerAngles.x, gameObject.transform.rotation.z * -1.0f, objectMesh.transform.rotation.eulerAngles.z);
         textMesh.text = $"{hp}/{maxHp}";
 
-        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Quaternion.LookRotation(target.transform.position - transform.position).eulerAngles.y, transform.rotation.eulerAngles.z);
         if (Vector3.Distance(transform.position, target.transform.position) <= visibleDistance && Vector3.Distance(transform.position, target.transform.position) > 1.5)
         {
             anim.SetBool("IsAttack", false);
             anim.SetBool("IsRunning", true);
+            transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Quaternion.LookRotation(target.transform.position - transform.position).eulerAngles.y, transform.rotation.eulerAngles.z);
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }else if(Vector3.Distance(transform.position, target.transform.position) > visibleDistance)
         {
-            anim.SetBool("IsRunning", false);
+            if(Vector3.Distance(transform.position, spawnEnemy.transform.position) > 1)
+            {
+                anim.SetBool("IsRunning", true);
+                transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Quaternion.LookRotation(spawnEnemy.transform.position - transform.position).eulerAngles.y, transform.rotation.eulerAngles.z);
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            }
+            else
+            {
+                anim.SetBool("IsRunning", false);
+            }
         }
         else if(Vector3.Distance(transform.position, target.transform.position) <= 1.5)
         {
@@ -58,6 +68,7 @@ public class Enemy : MonoBehaviour
         if(hp <= 0)
         {
             player.money += rewardOfKill;
+            spawnEnemy.GetComponent<SpawnEnemy>().countEnemy--;
             Destroy(gameObject);
         }
     }

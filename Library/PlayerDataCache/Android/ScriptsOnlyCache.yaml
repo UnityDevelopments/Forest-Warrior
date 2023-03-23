@@ -8,6 +8,7 @@ ScriptsOnlyBuild:
     - MyButton
     - PlayerControls
     - Spawn
+    - SpawnEnemy
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.TestRunner.dll:
@@ -97,6 +98,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13156}
     - Class: 114
       Script: {instanceID: 13184}
+    - Class: 114
+      Script: {instanceID: 130388}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -108,6 +111,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -175,6 +182,10 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -553,7 +564,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: 9c2c743295d6840b14f6389f5a55775c
+      Hash: 67294a7b55e4b6cc7bf137a9fc273d88
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Enemy
@@ -695,6 +706,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 99813ed9304d437d2cbfa40a33872c27
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: SpawnEnemy
   platform: 13
   scenePathNames:
   - Assets/Scenes/Main.unity

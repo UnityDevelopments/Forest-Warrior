@@ -18,6 +18,7 @@ public class PlayerControls : MonoBehaviour
     private MyButton attackButton, shiftButton;
     private GameObject enemy;
     private float lastTimeAttack, lastTimeEndurance, recoveryTimeEndurance;
+    private Text textMoney;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class PlayerControls : MonoBehaviour
         joystick = GameObject.Find("Fixed Joystick").GetComponent<FixedJoystick>();
         attackButton = GameObject.Find("AttackButton").GetComponent<MyButton>();
         shiftButton = GameObject.Find("ShiftButton").GetComponent<MyButton>();
+        textMoney = GameObject.Find("TextMoney").GetComponent<Text>();
     }
 
     // Update is called once per frame
@@ -36,9 +38,10 @@ public class PlayerControls : MonoBehaviour
         horizontal = joystick.Horizontal;
         vertical = joystick.Vertical;
 
-        //Обновление жизней и выносливости
+        //Обновление жизней, выносливости, денег
         hpSlider.value = hp / 100;
         enduranceSlider.value = endurance / 100;
+        textMoney.text = money.ToString();
 
         //Перемещение и Вращение
         if ((vertical != 0 || horizontal != 0) && isGround)
