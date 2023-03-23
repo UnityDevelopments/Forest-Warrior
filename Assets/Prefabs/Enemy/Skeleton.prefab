@@ -624,11 +624,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9c6cfba9c3912488cbf340751e4e25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  visibleDistance: 0
-  damage: 0
-  timeAttack: 0
-  hp: 0
+  speed: 3
+  visibleDistance: 10
+  damage: 5
+  timeAttack: 1
+  hp: 50
 --- !u!1 &1223537491749410842
 GameObject:
   m_ObjectHideFlags: 0

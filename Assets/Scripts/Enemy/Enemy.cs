@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour
     private Animator anim;
     private GameObject target;
     public float speed, visibleDistance, damage, timeAttack, hp;
+    public int rewardOfKill;
     private GameObject objectMesh;
     private TextMesh textMesh;
     private float lastTime, maxHp;
+    private PlayerControls player;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +19,7 @@ public class Enemy : MonoBehaviour
         anim = GetComponent<Animator>();
         target = GameObject.FindWithTag("Player");
         objectMesh = transform.Find("HpText").gameObject;
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
         textMesh = objectMesh.GetComponent<TextMesh>();
         maxHp = hp;
     }
@@ -54,6 +57,7 @@ public class Enemy : MonoBehaviour
 
         if(hp <= 0)
         {
+            player.money += rewardOfKill;
             Destroy(gameObject);
         }
     }
