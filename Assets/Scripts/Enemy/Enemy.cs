@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private TextMesh textMesh;
     private float lastTime, maxHp;
     private PlayerControls player;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class Enemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerControls>();
         textMesh = objectMesh.GetComponent<TextMesh>();
         maxHp = hp;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -36,14 +38,14 @@ public class Enemy : MonoBehaviour
             anim.SetBool("IsAttack", false);
             anim.SetBool("IsRunning", true);
             transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Quaternion.LookRotation(target.transform.position - transform.position).eulerAngles.y, transform.rotation.eulerAngles.z);
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
+            rb.transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }else if(Vector3.Distance(transform.position, target.transform.position) > visibleDistance)
         {
-            if(Vector3.Distance(transform.position, spawnEnemy.transform.position) > 1)
+            if(Vector3.Distance(transform.position, spawnEnemy.transform.position) > Random.Range(1.5f, 2.5f))
             {
                 anim.SetBool("IsRunning", true);
                 transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, Quaternion.LookRotation(spawnEnemy.transform.position - transform.position).eulerAngles.y, transform.rotation.eulerAngles.z);
-                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                rb.transform.Translate(Vector3.forward * speed * Time.deltaTime);
             }
             else
             {

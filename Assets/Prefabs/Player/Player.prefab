@@ -1214,9 +1214,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7985404996477049653}
   - component: {fileID: 7987547405190128936}
+  - component: {fileID: 718821134172362469}
   - component: {fileID: 791992263241415055}
   - component: {fileID: 2674075734998463929}
-  - component: {fileID: 718821134172362469}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1260,6 +1260,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &718821134172362469
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987547405190128937}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.16
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.98, z: 0}
 --- !u!54 &791992263241415055
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1274,7 +1288,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &2674075734998463929
 MonoBehaviour:
@@ -1295,26 +1309,9 @@ MonoBehaviour:
   damage: 10
   timeAttack: 1
   endurance: 100
+  money: 0
   rotateObject: {fileID: 7987623002732376709}
-  hpSlider: {fileID: 0}
-  enduranceSlider: {fileID: 0}
-  joystick: {fileID: 0}
-  attackButton: {fileID: 0}
-  shiftButton: {fileID: 0}
---- !u!136 &718821134172362469
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7987547405190128937}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.16
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.98, z: 0}
+  enemy: {fileID: 0}
 --- !u!1 &7987555996162566259
 GameObject:
   m_ObjectHideFlags: 0

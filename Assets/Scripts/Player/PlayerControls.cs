@@ -16,9 +16,10 @@ public class PlayerControls : MonoBehaviour
     private Joystick joystick;
     private float horizontal, vertical;
     private MyButton attackButton, shiftButton;
-    private GameObject enemy;
+    public GameObject enemy;
     private float lastTimeAttack, lastTimeEndurance, recoveryTimeEndurance;
     private Text textMoney;
+    private Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
@@ -30,6 +31,7 @@ public class PlayerControls : MonoBehaviour
         attackButton = GameObject.Find("AttackButton").GetComponent<MyButton>();
         shiftButton = GameObject.Find("ShiftButton").GetComponent<MyButton>();
         textMoney = GameObject.Find("TextMoney").GetComponent<Text>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -58,7 +60,7 @@ public class PlayerControls : MonoBehaviour
                 anim.SetFloat("SpeedRun", 1);
                 moveVector = new Vector3(horizontal * speed * Time.deltaTime, 0, vertical * speed * Time.deltaTime);
             }
-            transform.position += moveVector;
+            rb.position += moveVector;
             transform.rotation = Quaternion.LookRotation(moveVector, Vector3.up);
         }
         else
