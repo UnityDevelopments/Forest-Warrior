@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -20,6 +21,7 @@ public class PlayerControls : MonoBehaviour
     private float lastTimeAttack, lastTimeEndurance, recoveryTimeEndurance;
     private Text textMoney;
     private Rigidbody rb;
+    private bool _insideCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -90,6 +92,15 @@ public class PlayerControls : MonoBehaviour
         else
         {
             anim.SetBool("IsAttack", false);
+        }
+
+        //Открытие магазина
+        if(_insideCollider)
+        {
+            if(Input.GetKeyDown(KeyCode.E))
+            {
+                SceneManager.LoadScene("Magasin", LoadSceneMode.Additive);
+            }
         }
     }
 
