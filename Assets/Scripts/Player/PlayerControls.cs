@@ -18,10 +18,9 @@ public class PlayerControls : MonoBehaviour
     private float horizontal, vertical;
     private MyButton attackButton, shiftButton;
     public GameObject enemy;
-    private float lastTimeAttack, lastTimeEndurance, recoveryTimeEndurance;
+    private float lastTimeAttack, lastTimeEndurance, recoveryTimeEndurance, maxHp, maxEndurance;
     private Text textMoney;
     private Rigidbody rb;
-    private bool _insideCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +33,9 @@ public class PlayerControls : MonoBehaviour
         shiftButton = GameObject.Find("ShiftButton").GetComponent<MyButton>();
         textMoney = GameObject.Find("TextMoney").GetComponent<Text>();
         rb = GetComponent<Rigidbody>();
+
+        maxHp = hp;
+        maxEndurance = endurance;
     }
 
     // Update is called once per frame
@@ -43,8 +45,8 @@ public class PlayerControls : MonoBehaviour
         vertical = joystick.Vertical;
 
         //Обновление жизней, выносливости, денег
-        hpSlider.value = hp / 100;
-        enduranceSlider.value = endurance / 100;
+        hpSlider.value = 1/ maxHp * hp;
+        enduranceSlider.value = 1 / maxEndurance * endurance;
         textMoney.text = money.ToString();
 
         //Перемещение и Вращение
@@ -75,6 +77,7 @@ public class PlayerControls : MonoBehaviour
         {
             endurance -= 10;
             lastTimeEndurance = Time.time;
+            recoveryTimeEndurance = Time.time;
         }
         else if (!shiftButton.isPressed && Time.time - recoveryTimeEndurance >= 2 && endurance < 100)
         {
@@ -92,15 +95,6 @@ public class PlayerControls : MonoBehaviour
         else
         {
             anim.SetBool("IsAttack", false);
-        }
-
-        //Открытие магазина
-        if(_insideCollider)
-        {
-            if(Input.GetKeyDown(KeyCode.E))
-            {
-                SceneManager.LoadScene("Magasin", LoadSceneMode.Additive);
-            }
         }
     }
 

@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3753057927946842042
 Transform:
   m_ObjectHideFlags: 0
@@ -1845,6 +1845,7 @@ GameObject:
   - component: {fileID: 7984709067655083390}
   - component: {fileID: 7973600033880831162}
   - component: {fileID: 7965650565388955008}
+  - component: {fileID: 815226303232303558}
   m_Layer: 0
   m_Name: axe
   m_TagString: Untagged
@@ -1915,6 +1916,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &815226303232303558
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7987632418194073800}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4821389, y: 1.8512336, z: 0.6241728}
+  m_Center: {x: -0.6541312, y: -0.276133, z: -0.25851429}
 --- !u!1 &7987635352091742499
 GameObject:
   m_ObjectHideFlags: 0
