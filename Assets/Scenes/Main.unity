@@ -97,7 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 607adb2ed8851f642a3dd3b5056b08d5,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -458,7 +459,7 @@ GameObject:
   - component: {fileID: 1032069224}
   - component: {fileID: 1032069226}
   m_Layer: 5
-  m_Name: Scrollbar
+  m_Name: LoadScrollBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

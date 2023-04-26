@@ -27,16 +27,6 @@ public class Main : MonoBehaviour
     {
         buttonPlay.SetActive(false);
         loadScene.SetActive(true);
-        StartCoroutine(LoadScene());
-    }
-
-    IEnumerator LoadScene()
-    {
-        AsyncOperation operation = SceneManager.LoadSceneAsync(1);
-        while (!operation.isDone)
-        {
-            loadScrollbar.size = operation.progress / 0.9f;
-            yield return null;
-        }
+        StartCoroutine(SceneLoader.LoadScene(1, loadScrollbar));
     }
 }

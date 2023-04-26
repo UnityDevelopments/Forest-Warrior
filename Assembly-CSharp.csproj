@@ -70,6 +70,7 @@
      <Compile Include="Assets\Scripts\MyButton.cs" />
      <Compile Include="Assets\Scripts\OpenMagasin.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerControls.cs" />
+     <Compile Include="Assets\Scripts\SceneLoader.cs" />
      <Compile Include="Assets\Scripts\Spawn.cs" />
      <Compile Include="Assets\Scripts\SpawnEnemy.cs" />
      <None Include="Assets\SimplePixelUI\fonts\Font2\license.txt" />
