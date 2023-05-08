@@ -64,9 +64,10 @@
      <Compile Include="Assets\Joystick Pack\Scripts\Joysticks\VariableJoystick.cs" />
      <Compile Include="Assets\Scripts\CameraMove.cs" />
      <Compile Include="Assets\Scripts\Dungeon.cs" />
+     <Compile Include="Assets\Scripts\DungeonScene.cs" />
      <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />
-     <Compile Include="Assets\Scripts\Game.cs" />
-     <Compile Include="Assets\Scripts\Main.cs" />
+     <Compile Include="Assets\Scripts\GameScene.cs" />
+     <Compile Include="Assets\Scripts\MainScene.cs" />
      <Compile Include="Assets\Scripts\MyButton.cs" />
      <Compile Include="Assets\Scripts\OpenMagasin.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerControls.cs" />
